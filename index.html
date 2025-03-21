@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registrasi Seminar</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>  
+    body {
+      background-color: #f3f6f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    }
+    header {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-weight: bold;
+    }
+  
+    form {
+      background-color: #fff;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 0 15px rgba(0, 123, 255, 0.1);
+    }
+  
+    label {
+      font-weight: 500;
+    }
+  
+    #submitBtn:disabled {
+      background-color: #ccc;
+      border-color: #ccc;
+      cursor: not-allowed;
+    }
+  
+    #success-message {
+      font-weight: bold;
+      color: #28a745;
+    }
+  
+    footer {
+      margin-top: 40px;
+      background-color: #343a40;
+    }
+    html, body {
+  height: 100%;
+}
+
+.full-center {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+  </style>
+  
+</head>
+<body>
+  <header class="bg-primary text-white p-4 position-relative text-center" style="background: linear-gradient(to right, #2176d2, #0b2c4b);">
+    <img src="https://1.bp.blogspot.com/-esItudIv5-s/YNXCX7x4OrI/AAAAAAAAFZw/mLBRd55rQqscdee79P_UyXSAAVyEBNfPgCLcBGAsYHQ/s1600/Logo%2BPoliteknik%2BNegeri%2BMadiun.png"
+    alt="Logo Seminar"
+    class="img-fluid position-absolute start-0 top-50 translate-middle-y ms-3"
+    style="max-width: 60px; height: auto;">
+
+    <h1 class="h3 fw-bold m-0">Registrasi Seminar</h1>
+    <button
+      class="btn btn-outline-light position-absolute top-50 end-0 translate-middle-y me-3"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#sidebar"
+    >
+      ☰
+    </button>
+  </header>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="sidebarLabel">Menu</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <nav>
+      <ul class="nav flex-column">
+        <li class="nav-item"><a class="nav-link" href="#"id="infoLink">informasi</a></li>
+        <div id="infoText" class="ms-3 mt-2 text-muted d-none">
+        Seminar ini akan membahas teknologi masa depan dan peluang karier di bidang IT.
+        </div>
+        <li class="nav-item"><a class="nav-link" href="#">Jadwal</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Kontak</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<div class="container d-flex justify-content-center mt-3 py-4">
+  <div class="col-12 col-md-8 col-lg-6">
+    <form id="registrationForm">
+          <div class="mb-3">
+            <label for="nama" class="form-label">Nama Lengkap</label>
+            <input type="text" class="form-control" id="nama" placeholder="Nama lengkap">
+            <div class="text-danger small" id="error-nama"></div>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="email@example.com">
+            <div class="text-danger small" id="error-email"></div>
+          </div>
+
+          <div class="mb-3">
+            <label for="form-check-label">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password">
+            <div class="text-danger small" id="error-password"></div>
+          </div>
+    
+          <div class="mb-3">
+            <label for="confirm-password" class="form-label">Konfirmasi Password</label>
+            <input type="password" class="form-control" id="confirm-password">
+            <div class="text-danger small" id="error-confirm-password"></div>
+          </div>
+          <div class="mb-3">
+            <input type="checkbox" class="form-check-input" id="showPassword">
+            <label class="form-check-label" for="showPassword">Tampilkan Password</label>
+          </div>
+
+          <div class="mb-3">
+            <label for="birthdate" class="form-label">Tanggal Lahir</label>
+            <input type="date" class="form-control" id="birthdate">
+            <div class="text-danger small" id="error-birthdate"></div>
+          </div>
+
+          <div class="mb-3">
+            <label for="phone" class="form-label">Nomor HP</label>
+            <input type="tel" class="form-control" id="phone" placeholder="08xxxxxxxxxx">
+            <div class="text-danger small" id="error-phone"></div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="submitBtn" disabled>Daftar</button>
+          <button type="reset" class="btn btn-secondary ms-2">Reset</button>
+          <div class="text-success mt-3" id="success-message"></div>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white text-center py-3">
+    <small>&copy; 2025 IT PNM Summit</small>
+  </footer>
+
+<script>
+  const infoLink = document.getElementById('infoLink');
+  const infoText = document.getElementById('infoText');
+
+  infoLink.addEventListener('click', function (e) {
+    e.preventDefault(); // cegah link reload
+    infoText.classList.toggle('d-none'); // toggle tampilan teks
+  });
+  const form = document.getElementById('registrationForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const successMsg = document.getElementById('success-message');
+
+  const fields = {
+    nama: document.getElementById('nama'),
+    email: document.getElementById('email'),
+    password: document.getElementById('password'),
+    confirmPassword: document.getElementById('confirm-password'),
+    birthdate: document.getElementById('birthdate'),
+    phone: document.getElementById('phone'),
+  };
+const showPasswordCheckbox = document.getElementById('showPassword');
+showPasswordCheckbox.addEventListener('change', function () {
+  const passwordInput = fields.password;
+  const confirmPasswordInput = fields.confirmPassword;
+
+  const newType = this.checked ? 'text' : 'password';
+  passwordInput.type = newType;
+  confirmPasswordInput.type = newType;
+});
+
+  const errors = {
+    nama: document.getElementById('error-nama'),
+    email: document.getElementById('error-email'),
+    password: document.getElementById('error-password'),
+    confirmPassword: document.getElementById('error-confirm-password'),
+    birthdate: document.getElementById('error-birthdate'),
+    phone: document.getElementById('error-phone'),
+  };
+
+  function validateForm() {
+    let valid = true;
+    successMsg.textContent = '';
+
+    if (fields.nama.value.trim().length < 3) {
+      errors.nama.textContent = 'Nama minimal 3 karakter.';
+      valid = false;
+    } else {
+      errors.nama.textContent = '';
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(fields.email.value)) {
+      errors.email.textContent = 'Format email tidak valid.';
+      valid = false;
+    } else {
+      errors.email.textContent = '';
+    }
+
+    if (fields.password.value.length < 8) {
+      errors.password.textContent = 'Password minimal 8 karakter.';
+      valid = false;
+    } else {
+      errors.password.textContent = '';
+    }
+
+    if (fields.confirmPassword.value !== fields.password.value) {
+      errors.confirmPassword.textContent = 'Konfirmasi password tidak cocok.';
+      valid = false;
+    } else {
+      errors.confirmPassword.textContent = '';
+    }
+
+    const birthYear = new Date(fields.birthdate.value).getFullYear();
+    if (!birthYear || birthYear > 2006) {
+      errors.birthdate.textContent = 'Tanggal lahir harus sebelum tahun 2006.';
+      valid = false;
+    } else {
+      errors.birthdate.textContent = '';
+    }
